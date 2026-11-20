@@ -1,1 +1,36 @@
-(()=>{const D=window.RADAR.map(x=>({s:x[0],n:x[1],r:x[2],v:x[3],t:x[4],c:x[5],ch:x[6],x:x[7]})),board=document.querySelector('#board'),q=document.querySelector('#q'),cat=document.querySelector('#cat'),detail=document.querySelector('#detail');document.querySelector('#count').textContent=D.length;[...new Set(D.map(x=>x.c||'Other'))].sort().forEach(x=>cat.add(new Option(x,x)));let desc=true;function money(n){return '$'+(n>=1e9?(n/1e9).toFixed(1)+'B':n>=1e6?(n/1e6).toFixed(1)+'M':Math.round(n/1e3)+'K')}function render(){let h=new URLSearchParams(location.hash.slice(1)),f=h.get('filter')||'';if(f&&!cat.value)cat.value=f;let a=D.filter(x=>(x.n+' '+x.s+' '+(x.c||'')+' '+x.ch.join(' ')).toLowerCase().includes(q.value.toLowerCase())&&(!cat.value||x.c===cat.value));a.sort((x,y)=>(desc?1:-1)*(y.v-x.v));board.innerHTML=a.map(x=>`<article class="row" data-s="${x.s}"><div class="rank">${String(x.r).padStart(3,'0')}</div><div><div class="name">${x.n}</div><div class="meta">${x.s}</div></div><div><span class="tag">${x.c||'Other'}</span><div class="meta">${x.ch.join(' · ')}</div></div><div class="value">${money(x.v)}<div class="meta">TVL ${money(x.t||0)}</div></div><div class="arrow">→</div></article>`).join('')||'<p>No signals match.</p>';document.querySelectorAll('.row').forEach(e=>e.onclick=()=>location.hash='p='+e.dataset.s)}function show(){let s=new URLSearchParams(location.hash.slice(1)).get('p'),x=D.find(y=>y.s===s);if(!x){detail.className='';return}detail.className='show';detail.innerHTML=`<p class="eyebrow">RANK ${x.r} · ${x.c||'Other'}</p><h2>${x.n}</h2><p>${x.s} · implied value <b>${money(x.v)}</b> · TVL ${money(x.t||0)}</p><div class="steps">${x.x.map((z,i)=>`<div class="step"><b>0${i+1}</b> ${z}</div>`).join('')}</div>`;detail.scrollIntoView({behavior:'auto',block:'start'})}q.oninput=render;cat.onchange=render;document.querySelector('#sort').onclick=()=>{desc=!desc;render()};addEventListener('hashchange',()=>{render();show()});render();show()})()
+(()=>{
+ const D=window.RADAR.map(x=>({s:x[0],n:x[1],r:x[2],v:x[3],t:x[4],c:x[5],ch:x[6],x:x[7]}));
+ const board=document.querySelector('#board');
+ const q=document.querySelector('#q');
+ const cat=document.querySelector('#cat');
+ const detail=document.querySelector('#detail');
+ document.querySelector('#count').textContent=D.length;
+ [...new Set(D.map(x=>x.c||'Other'))].sort().forEach(x=>cat.add(new Option(x,x)));
+ let desc=true;
+ function money(n){
+  return '$'+(n>=1e9?(n/1e9).toFixed(1)+'B':n>=1e6?(n/1e6).toFixed(1)+'M':Math.round(n/1e3)+'K');
+ }
+ function render(){
+  let h=new URLSearchParams(location.hash.slice(1));
+  let f=h.get('filter')||'';
+  if(f&&!cat.value)cat.value=f;
+  let a=D.filter(x=>(x.n+' '+x.s+' '+(x.c||'')+' '+x.ch.join(' ')).toLowerCase().includes(q.value.toLowerCase())&&(!cat.value||x.c===cat.value));
+  a.sort((x,y)=>(desc?1:-1)*(y.v-x.v));
+  board.innerHTML=a.map(x=>`<article class="row" data-s="${x.s}"><div class="rank">${String(x.r).padStart(3,'0')}</div><div><div class="name">${x.n}</div><div class="meta">${x.s}</div></div><div><span class="tag">${x.c||'Other'}</span><div class="meta">${x.ch.join(' · ')}</div></div><div class="value">${money(x.v)}<div class="meta">TVL ${money(x.t||0)}</div></div><div class="arrow">→</div></article>`).join('')||'<p>No signals match.</p>';
+  document.querySelectorAll('.row').forEach(e=>e.onclick=()=>location.hash='p='+e.dataset.s);
+ }
+ function show(){
+  let s=new URLSearchParams(location.hash.slice(1)).get('p');
+  let x=D.find(y=>y.s===s);
+  if(!x){detail.className='';return}
+  detail.className='show';
+  detail.innerHTML=`<p class="eyebrow">RANK ${x.r} · ${x.c||'Other'}</p><h2>${x.n}</h2><p>${x.s} · implied value <b>${money(x.v)}</b> · TVL ${money(x.t||0)}</p><div class="steps">${x.x.map((z,i)=>`<div class="step"><b>0${i+1}</b> ${z}</div>`).join('')}</div>`;
+  detail.scrollIntoView({behavior:'auto',block:'start'});
+ }
+ q.oninput=render;
+ cat.onchange=render;
+ document.querySelector('#sort').onclick=()=>{desc=!desc;render()};
+ addEventListener('hashchange',()=>{render();show()});
+ render();
+ show();
+})()

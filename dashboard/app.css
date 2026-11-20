@@ -1,1 +1,133 @@
-:root{--ink:#17211b;--muted:#6c786f;--cream:#f4f2eb;--card:#fffdf8;--line:#dfe3d9;--lime:#c9f36b;--orange:#ff8552}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,sans-serif}main{max-width:1180px;margin:auto;padding:42px 34px}header{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:32px}h1{font:700 62px Georgia,serif;letter-spacing:-3px;margin:6px 0}.eyebrow{font-size:11px;letter-spacing:2px;color:#6b8e26;font-weight:700}.sub{color:var(--muted);font-size:16px}.stat{background:var(--lime);padding:18px 24px;border-radius:18px;text-align:right}.stat b{display:block;font-size:34px}.stat span{font-size:11px;text-transform:uppercase;letter-spacing:1px}.tools{display:flex;gap:10px;margin:24px 0}input,select,button{border:1px solid var(--line);background:var(--card);padding:12px 14px;border-radius:10px;color:var(--ink);font:inherit}input{flex:1}button{cursor:pointer}.row{display:grid;grid-template-columns:55px 1.4fr 1fr 150px 80px;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);padding:16px 18px;margin:8px 0;border-radius:14px}.row:hover{border-color:#a8c85a;transform:translateX(2px)}.rank{color:var(--muted);font-weight:700}.name{font-weight:700}.meta{color:var(--muted);font-size:12px;margin-top:4px}.value{font-weight:700}.tag{background:#edf1e7;border-radius:99px;padding:5px 9px;font-size:11px;display:inline-block}.arrow{font-size:20px;color:var(--orange)}#detail{display:none;background:#17211b;color:#f4f2eb;padding:30px;border-radius:18px;margin-top:22px}#detail.show{display:block}#detail h2{font:38px Georgia;margin:6px 0 12px}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.step{background:#26352b;border-radius:10px;padding:14px;color:#dfe9d9;font-size:13px}@media(max-width:700px){main{padding:24px 16px}h1{font-size:45px}.row{grid-template-columns:35px 1fr 30px}.row .value,.row .tag{display:none}.steps{grid-template-columns:1fr}}
+:root {
+ --ink:#17211b;
+ --muted:#6c786f;
+ --cream:#f4f2eb;
+ --card:#fffdf8;
+ --line:#dfe3d9;
+ --lime:#c9f36b;
+ --orange:#ff8552;
+}
+* { box-sizing:border-box; }
+body {
+ margin:0;
+ background:var(--cream);
+ color:var(--ink);
+ font:15px system-ui,-apple-system,Segoe UI,sans-serif;
+}
+main {
+ max-width:1180px;
+ margin:auto;
+ padding:42px 34px;
+}
+header {
+ display:flex;
+ justify-content:space-between;
+ align-items:end;
+ border-bottom:1px solid var(--line);
+ padding-bottom:32px;
+}
+h1 {
+ font:700 62px Georgia,serif;
+ letter-spacing:-3px;
+ margin:6px 0;
+}
+.eyebrow {
+ font-size:11px;
+ letter-spacing:2px;
+ color:#6b8e26;
+ font-weight:700;
+}
+.sub {
+ color:var(--muted);
+ font-size:16px;
+}
+.stat {
+ background:var(--lime);
+ padding:18px 24px;
+ border-radius:18px;
+ text-align:right;
+}
+.stat b {
+ display:block;
+ font-size:34px;
+}
+.stat span {
+ font-size:11px;
+ text-transform:uppercase;
+ letter-spacing:1px;
+}
+.tools {
+ display:flex;
+ gap:10px;
+ margin:24px 0;
+}
+input,select,button {
+ border:1px solid var(--line);
+ background:var(--card);
+ padding:12px 14px;
+ border-radius:10px;
+ color:var(--ink);
+ font:inherit;
+}
+input { flex:1; }
+button { cursor:pointer; }
+.row {
+ display:grid;
+ grid-template-columns:55px 1.4fr 1fr 150px 80px;
+ gap:16px;
+ align-items:center;
+ background:var(--card);
+ border:1px solid var(--line);
+ padding:16px 18px;
+ margin:8px 0;
+ border-radius:14px;
+}
+.row:hover {
+ border-color:#a8c85a;
+ transform:translateX(2px);
+}
+.rank { color:var(--muted); font-weight:700; }
+.name { font-weight:700; }
+.meta {
+ color:var(--muted);
+ font-size:12px;
+ margin-top:4px;
+}
+.value { font-weight:700; }
+.tag {
+ background:#edf1e7;
+ border-radius:99px;
+ padding:5px 9px;
+ font-size:11px;
+ display:inline-block;
+}
+.arrow { font-size:20px; color:var(--orange); }
+#detail {
+ display:none;
+ background:#17211b;
+ color:#f4f2eb;
+ padding:30px;
+ border-radius:18px;
+ margin-top:22px;
+}
+#detail.show { display:block; }
+#detail h2 { font:38px Georgia; margin:6px 0 12px; }
+.steps {
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+.step {
+ background:#26352b;
+ border-radius:10px;
+ padding:14px;
+ color:#dfe9d9;
+ font-size:13px;
+}
+@media(max-width:700px) {
+ main { padding:24px 16px; }
+ h1 { font-size:45px; }
+ .row { grid-template-columns:35px 1fr 30px; }
+ .row .value,.row .tag { display:none; }
+ .steps { grid-template-columns:1fr; }
+}
