@@ -131,3 +131,18 @@ button { cursor:pointer; }
  .row .value,.row .tag { display:none; }
  .steps { grid-template-columns:1fr; }
 }
+.claims{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 0}
+.claim{background:#17211b;color:#f4f2eb;border-radius:99px;padding:7px 12px;font-size:12px;font-weight:700}
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.panel p{font-size:13px}
+.formula{font-size:13px;background:#26352b;color:#dfe9d9;border-radius:8px;padding:10px;margin:10px 0}
+.top10{display:flex;gap:6px;flex-wrap:wrap;margin-top:20px}
+.t10h{font-size:11px;color:#6b8e26;font-weight:700}
+.t10{padding:7px 10px;border-radius:99px;font-size:12px}
+.t10 b{color:#6b8e26}
+.mult{grid-column:1/-1;color:var(--muted);font-size:12px}
+button.on{background:#17211b;color:#f4f2eb}
+#live{display:none}
+#live h2{font:32px Georgia;margin:20px 0 6px}
+@media(max-width:700px){.panels{grid-template-columns:1fr}}

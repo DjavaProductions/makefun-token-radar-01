@@ -16,17 +16,45 @@
    <div class="stat">
     <b id="count"></b>
     <span>pre-token signals</span>
+    <span id="total"></span>
    </div>
   </header>
+  <section class="claims" id="claims"></section>
+  <section class="panels">
+   <div class="panel">
+    <p class="eyebrow">THE MODEL — RADAR-3</p>
+    <p class="formula">implied = TVL × 0.1811 × (1 + 0.25 × clamp(7d, −30, +60) / 100) × (1 − 0.2 × min(age, 1095) / 1095) × exp(−1.0 × (log10(TVL) − 8)) × (P_listed / 0.549)^0.5</p>
+    <p>Base <b>0.1811 at the $100M size reference</b>. Unknown age counts as 677 days. Implied value is max(1, round(implied)).</p>
+   </div>
+   <div class="panel">
+    <p class="eyebrow">CALIBRATION — LIVE MARKET</p>
+    <p id="calib"></p>
+    <p>The 0.1811 base sits below the live median. Snapshot: DefiLlama protocols API, as of 2026-11-14, $50M floor.</p>
+   </div>
+   <div class="panel">
+    <p class="eyebrow">ODDS — WILL IT LIST?</p>
+    <p id="odds"></p>
+    <p id="logit"></p>
+   </div>
+  </section>
+  <section class="top10" id="top10"></section>
   <section class="tools">
    <input id="q" placeholder="Search protocol, category, chain…">
    <select id="cat">
     <option value="">All categories</option>
    </select>
+   <select id="seg">
+    <option value="">Watchlist + early</option>
+    <option value="0">Watchlist only</option>
+    <option value="1">Early only</option>
+   </select>
    <button id="sort">Sort: value ↓</button>
+   <button id="vBoard">Board</button>
+   <button id="vLive">Live 24</button>
   </section>
   <aside id="detail"></aside>
   <section id="board"></section>
+  <section id="live"></section>
  </main>
  <script src="data.js"></script>
  <script src="app.js"></script>
